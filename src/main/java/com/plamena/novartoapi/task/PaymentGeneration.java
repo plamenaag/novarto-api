@@ -40,7 +40,7 @@ public class PaymentGeneration {
         this.paymentService = paymentService;
     }
 
-    @Scheduled(fixedRate = 5 * 1000)
+    @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
     public void generatePayment(){
         Timestamp now = new Timestamp(System.currentTimeMillis());
         List<Account> accounts = accountService.getByNextPaymentDate(now);
