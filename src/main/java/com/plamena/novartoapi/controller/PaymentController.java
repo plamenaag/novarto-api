@@ -7,12 +7,10 @@ import com.plamena.novartoapi.exception.CustomException;
 import com.plamena.novartoapi.service.InvoiceService;
 import com.plamena.novartoapi.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
@@ -25,7 +23,7 @@ public class PaymentController {
     private InvoiceService invoiceService;
 
     @Autowired
-    public PaymentController(PaymentService paymentService,InvoiceService invoiceService) {
+    public PaymentController(PaymentService paymentService, InvoiceService invoiceService) {
         this.paymentService = paymentService;
         this.invoiceService = invoiceService;
     }

@@ -23,28 +23,30 @@ public class AccountStatusController {
     @GetMapping("/{id}")
     public ServiceResponse get(@PathVariable("id") Integer id) {
         ServiceResponse response = new ServiceResponse(ServiceResponse.Status.SUCCESS);
-        try{
+        try {
             response.setData(accountStatusService.get(id));
-        }catch (CustomException ex){
+        } catch (CustomException ex) {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setErrorCode(ex.getErrorCode());
             response.setMessage(ex.getMessage());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setMessage(ex.getMessage());
         }
+
         return response;
     }
 
     @GetMapping
     public ServiceResponse getAll() {
         ServiceResponse response = new ServiceResponse(ServiceResponse.Status.SUCCESS);
-        try{
+        try {
             response.setData(accountStatusService.get());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setMessage(ex.getMessage());
         }
+
         return response;
     }
 }

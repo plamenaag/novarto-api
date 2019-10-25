@@ -25,11 +25,11 @@ public class PaymentStatusController {
         ServiceResponse response = new ServiceResponse(ServiceResponse.Status.SUCCESS);
         try {
             response.setData(paymentStatusService.get(id));
-        }catch (CustomException ex){
+        } catch (CustomException ex) {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setErrorCode(ex.getErrorCode());
             response.setMessage(ex.getMessage());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setMessage(ex.getMessage());
         }
@@ -40,10 +40,10 @@ public class PaymentStatusController {
     @GetMapping
     public ServiceResponse getAll() {
         ServiceResponse response = new ServiceResponse(ServiceResponse.Status.SUCCESS);
-        try{
+        try {
             response.setData(paymentStatusService.get());
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setMessage(ex.getMessage());
         }

@@ -1,11 +1,9 @@
 package com.plamena.novartoapi.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.plamena.novartoapi.entity.Account;
-import com.plamena.novartoapi.entity.Customer;
 
 import java.io.IOException;
 
@@ -17,14 +15,14 @@ public class AccountSerializer extends JsonSerializer<Account> {
 
         jgen.writeStartObject();
         jgen.writeObjectField("id", entity.getId());
-        if(entity.getCreateDate()!=null){
+        if (entity.getCreateDate() != null) {
             jgen.writeObjectField("createDate", entity.getCreateDate().getTime());
-        }else{
+        } else {
             jgen.writeNullField("createDate");
         }
-        if(entity.getNextPaymentDate()!=null){
+        if (entity.getNextPaymentDate() != null) {
             jgen.writeObjectField("nextPaymentDate", entity.getNextPaymentDate().getTime());
-        }else{
+        } else {
             jgen.writeNullField("nextPaymentDate");
         }
 
@@ -32,10 +30,9 @@ public class AccountSerializer extends JsonSerializer<Account> {
 
         jgen.writeObjectField("subscription", entity.getSubscription());
 
-        if (entity.getCustomers() != null  && entity.getCustomers().size() > 0) {
+        if (entity.getCustomers() != null && entity.getCustomers().size() > 0) {
             jgen.writeObjectField("customers", entity.getCustomers());
         }
-
 
         jgen.writeEndObject();
     }

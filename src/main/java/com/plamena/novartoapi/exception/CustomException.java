@@ -13,7 +13,7 @@ public class CustomException extends Exception {
         this.lowLevelException = null;
     }
 
-    public CustomException(String errorCode,String msg) {
+    public CustomException(String errorCode, String msg) {
         super(errorCode);
         this.errorCode = errorCode;
         this.internalMessage = msg;
@@ -38,6 +38,7 @@ public class CustomException extends Exception {
     public final Exception getLowLevelException() {
         return this.lowLevelException;
     }
+
     @Override
     public String getMessage() {
         return this.internalMessage;

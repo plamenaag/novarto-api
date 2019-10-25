@@ -25,6 +25,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         if (!subscription.isPresent()) {
             throw new CustomException(ErrorEnum.SUBSCRIPTION_DOES_NOT_EXISTS);
         }
+
         return subscription.get();
     }
 

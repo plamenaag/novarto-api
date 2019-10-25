@@ -19,7 +19,7 @@ public class CustomerSerializer extends JsonSerializer<Customer> {
         jgen.writeObjectField("firstName", entity.getFirstName());
         jgen.writeObjectField("lastName", entity.getLastName());
 
-        if (entity.getAccount()!= null && entity.getAccount().getId()!= null) {
+        if (entity.getAccount() != null && entity.getAccount().getId() != null) {
             jgen.writeObjectFieldStart("account");
             jgen.writeObjectField("id", entity.getAccount().getId());
             jgen.writeObjectField("subscription", entity.getAccount().getSubscription());

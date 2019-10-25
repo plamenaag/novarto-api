@@ -47,7 +47,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public Payment payPayment(Integer id) throws CustomException {
         Payment payment = get(id);
-        if(payment.getPaymentStatus().getCode().equals(Constants.PAYMENT_STATUS_PAID)){
+        if (payment.getPaymentStatus().getCode().equals(Constants.PAYMENT_STATUS_PAID)) {
             throw new CustomException(ErrorEnum.PAYMENT_ALREADY_PAID);
         }
 

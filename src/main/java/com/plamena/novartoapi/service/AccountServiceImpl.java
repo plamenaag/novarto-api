@@ -13,7 +13,6 @@ import com.plamena.novartoapi.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -66,7 +65,7 @@ public class AccountServiceImpl implements AccountService {
         account.setAccountStatus(accountStatus.get());
         Timestamp now = new Timestamp(System.currentTimeMillis());
         account.setCreateDate(now);
-        account.setNextPaymentDate(TimeUtil.addDays(now,Constants.PAYMENT_PERIOD));
+        account.setNextPaymentDate(TimeUtil.addDays(now, Constants.PAYMENT_PERIOD));
         return accountRepository.save(account);
     }
 
@@ -75,7 +74,7 @@ public class AccountServiceImpl implements AccountService {
         Account entityToUpdate = get(id);
 
         if (account.getSubscription() != null && account.getSubscription().getId() != null
-             && !entityToUpdate.getSubscription().getId().equals(account.getSubscription().getId())) {
+                && !entityToUpdate.getSubscription().getId().equals(account.getSubscription().getId())) {
             Optional<Subscription> subscription = subscriptionRepository.findById(account.getSubscription().getId());
 
             if (!subscription.isPresent()) {
@@ -87,8 +86,8 @@ public class AccountServiceImpl implements AccountService {
             }
 
             Timestamp now = new Timestamp(System.currentTimeMillis());
-            if(!TimeUtil.datesAreEqual(entityToUpdate.getNextPaymentDate(), now) &&
-                    !TimeUtil.datesAreEqual(TimeUtil.addDays(entityToUpdate.getNextPaymentDate(),-30), now)){
+            if (!TimeUtil.datesAreEqual(entityToUpdate.getNextPaymentDate(), now) &&
+                    !TimeUtil.datesAreEqual(TimeUtil.addDays(entityToUpdate.getNextPaymentDate(), -30), now)) {
                 throw new CustomException(ErrorEnum.CAN_UPGRADE_SUBSCRIPTION_ONLY_ON_BILL_DATE);
             }
 
@@ -102,11 +101,12 @@ public class AccountServiceImpl implements AccountService {
             }
             entityToUpdate.setAccountStatus(status.get());
         }
+
         return accountRepository.save(entityToUpdate);
     }
 
     @Override
-    public Account updateNextInvoiceDate(Account account) throws CustomException {
+    public Account updateNextInvoiceDate(Account account) {
         return accountRepository.save(account);
     }
 

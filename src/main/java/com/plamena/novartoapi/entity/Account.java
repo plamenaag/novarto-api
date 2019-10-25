@@ -2,6 +2,7 @@ package com.plamena.novartoapi.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.plamena.novartoapi.serializer.AccountSerializer;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +17,11 @@ import java.util.List;
 @JsonSerialize(using = AccountSerializer.class)
 public class Account extends BaseModel {
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "subscription_id")
     private Subscription subscription;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "account_status_id")
     private AccountStatus accountStatus;
 

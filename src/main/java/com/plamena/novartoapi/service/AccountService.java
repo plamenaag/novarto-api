@@ -15,7 +15,7 @@ public interface AccountService {
 
     Account create(Account account) throws CustomException;
 
-    Account update(Integer id,Account account) throws CustomException;
+    Account update(Integer id, Account account) throws CustomException;
 
     Account updateNextInvoiceDate(Account account) throws CustomException;
 

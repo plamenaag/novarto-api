@@ -8,8 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class NovartoApiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(NovartoApiApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(NovartoApiApplication.class, args);
+    }
 }

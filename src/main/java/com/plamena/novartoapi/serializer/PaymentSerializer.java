@@ -41,13 +41,12 @@ public class PaymentSerializer extends JsonSerializer<Payment> {
             jgen.writeEndArray();
         }
 
-        if(entity.getAccount()!=null && entity.getAccount().getId()!=null){
+        if (entity.getAccount() != null && entity.getAccount().getId() != null) {
             jgen.writeObjectFieldStart("account");
-                jgen.writeObjectField("id", entity.getAccount().getId());
+            jgen.writeObjectField("id", entity.getAccount().getId());
             jgen.writeEndObject();
         }
 
         jgen.writeEndObject();
     }
-
 }

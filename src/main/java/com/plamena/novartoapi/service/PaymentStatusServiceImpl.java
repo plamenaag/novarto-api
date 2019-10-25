@@ -25,6 +25,7 @@ public class PaymentStatusServiceImpl implements PaymentStatusService {
         if (!paymentStatus.isPresent()) {
             throw new CustomException(ErrorEnum.PAYMENT_STATUS_DOES_NOT_EXISTS);
         }
+
         return paymentStatus.get();
     }
 
@@ -39,6 +40,7 @@ public class PaymentStatusServiceImpl implements PaymentStatusService {
         if (!paymentStatus.isPresent()) {
             throw new CustomException(ErrorEnum.PAYMENT_STATUS_DOES_NOT_EXISTS);
         }
+
         return paymentStatus.get();
     }
 }

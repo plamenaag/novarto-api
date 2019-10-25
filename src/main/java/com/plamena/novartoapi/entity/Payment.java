@@ -2,6 +2,7 @@ package com.plamena.novartoapi.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.plamena.novartoapi.serializer.PaymentSerializer;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +37,6 @@ public class Payment extends BaseModel {
     @OneToMany(mappedBy = "payment",
             cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     private List<Invoice> invoices;
-
 
     public Double getPrice() {
         return price;

@@ -23,13 +23,13 @@ public class SubscriptionController {
     @GetMapping("/{id}")
     public ServiceResponse get(@PathVariable("id") Integer id) {
         ServiceResponse response = new ServiceResponse(ServiceResponse.Status.SUCCESS);
-        try{
+        try {
             response.setData(subscriptionService.get(id));
-        }catch (CustomException ex){
+        } catch (CustomException ex) {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setErrorCode(ex.getErrorCode());
             response.setMessage(ex.getMessage());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setMessage(ex.getMessage());
         }

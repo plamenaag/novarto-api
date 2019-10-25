@@ -2,23 +2,20 @@ package com.plamena.novartoapi.task;
 
 import com.plamena.novartoapi.Constants;
 import com.plamena.novartoapi.entity.Account;
-import com.plamena.novartoapi.entity.Invoice;
 import com.plamena.novartoapi.entity.Payment;
 import com.plamena.novartoapi.exception.CustomException;
 import com.plamena.novartoapi.service.AccountService;
 import com.plamena.novartoapi.service.PaymentService;
 import com.plamena.novartoapi.service.PaymentStatusService;
 import com.plamena.novartoapi.util.TimeUtil;
-
-import java.sql.Timestamp;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Component
 public class PaymentGeneration {
@@ -27,6 +24,7 @@ public class PaymentGeneration {
     private PaymentService paymentService;
 
     private final static Logger LOGGER;
+
     static {
         LOGGER = Logger.getLogger(PaymentGeneration.class.getName());
         LOGGER.setLevel(Level.SEVERE);
@@ -41,7 +39,7 @@ public class PaymentGeneration {
     }
 
     @Scheduled(fixedRate = 24 * 60 * 60 * 1000)
-    public void generatePayment(){
+    public void generatePayment() {
         Timestamp now = new Timestamp(System.currentTimeMillis());
         List<Account> accounts = accountService.getByNextPaymentDate(now);
 
@@ -57,8 +55,8 @@ public class PaymentGeneration {
 
                 account.setNextPaymentDate(TimeUtil.addDays(account.getNextPaymentDate(), Constants.PAYMENT_PERIOD));
                 accountService.updateNextInvoiceDate(account);
-            }catch (CustomException ex){
-                LOGGER.log(Level.SEVERE,ex.getErrorCode());
+            } catch (CustomException ex) {
+                LOGGER.log(Level.SEVERE, ex.getErrorCode());
             }
         }
     }

@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
 @RestController
 @RequestMapping("/api/v1/customers")
 @SuppressWarnings("Duplicates")
@@ -40,9 +38,8 @@ public class CustomerController {
             response.setStatusCode(ServiceResponse.Status.FAILURE);
             response.setMessage(ex.getMessage());
         }
+
         return response;
-
-
     }
 
     @GetMapping
@@ -77,7 +74,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ServiceResponse update(@PathVariable() Integer id,@RequestBody Customer customer) {
+    public ServiceResponse update(@PathVariable() Integer id, @RequestBody Customer customer) {
         ServiceResponse response = new ServiceResponse(ServiceResponse.Status.SUCCESS);
         try {
             Customer updatedCustomer = customerService.update(id, customer);

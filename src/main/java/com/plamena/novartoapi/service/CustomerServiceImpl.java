@@ -18,7 +18,7 @@ public class CustomerServiceImpl implements CustomerService {
     private AccountRepository accountRepository;
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository,AccountRepository accountRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, AccountRepository accountRepository) {
         this.customerRepository = customerRepository;
         this.accountRepository = accountRepository;
     }
@@ -83,7 +83,7 @@ public class CustomerServiceImpl implements CustomerService {
             throw new CustomException(ErrorEnum.USERNAME_IS_REQUIRED);
         }
 
-        if(!customer.getUsername().equals(entityToUpdate.getUsername())){
+        if (!customer.getUsername().equals(entityToUpdate.getUsername())) {
             Optional<Customer> foundCustomer = customerRepository.findByUsername(customer.getUsername());
             if (foundCustomer.isPresent()) {
                 throw new CustomException(ErrorEnum.USERNAME_ALREADY_EXISTS);
